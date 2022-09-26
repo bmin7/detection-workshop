@@ -1,8 +1,7 @@
-# detection-workshop
-Welcome to the Panther Detection Workshop!
+## Welcome to the Detections Workshop
 This guide will provide you with a step-by-step of all the commands we will use throughout this workshop. Please reference it as we move forward. If you have questions, feel free to ask your group moderator.
 
-**Exercise 1 Overview**
+## Exercise 1 Overview
 - We will use a pre-packaged detection from Panther and modify it to our liking within the Panther Console.
 
 **Terms we'll reference**
@@ -21,7 +20,7 @@ This guide will provide you with a step-by-step of all the commands we will use 
 
 
 **Code 1-1**
-{
+```{
 	"debugContext": {},
 	"published": "2021-01-08 21:28:34.875",
 	"eventType": "system.api_token.create",
@@ -49,4 +48,4 @@ This guide will provide you with a step-by-step of all the commands we will use 
 			"details": null
 		}
 	]
-}
+}```
