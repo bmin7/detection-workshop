@@ -51,3 +51,32 @@ We will use a pre-packaged detection from Panther and modify it to our liking wi
 	]
 }
 ```
+
+## Exercise 2 Overview
+Utilzing the Panther Analysis Tool to create, test, and upload a new detection. 
+
+
+**Terms we'll reference**
+- [Panther Analysis Tool](https://docs.panther.com/panther-developer-workflows/panther-analysis-tool#overview)
+- [API Key](https://docs.panther.com/panther-developer-workflows/api#how-to-use-panthers-api)
+
+
+**Exercise 2 Steps**
+1. Install Panther Analysis Tool 
+```$ pip install panther_analysis_tool```
+2. Verify proper version 
+```$ panther_analysis_tool --version```
+3. Fork off Panther Analysis Tool to local 
+```git clone https://github.com/panther-labs/panther-analysis.git```
+4. Create API Token in Panther Console 
+5. Use Check-Connection to verify API setup is successful
+```$ panther_analysis_tool check-connection --api-host DOMAIN --api-token TOKEN```
+6. Create new file and copy a .py and .yml file
+7. Modify .py file and .yml file
+8. Test the rule
+```$ panther_analysis_tool test --path <path to rule>```
+9. Once verified, upload the rule
+```$ panther_analysis_tool upload --path <path to rule> --api-host DOMAIN --api-token TOKEN```
+10. Check Panther Console for changes
+
+
