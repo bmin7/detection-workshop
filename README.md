@@ -80,3 +80,22 @@ Utilzing the Panther Analysis Tool to create, test, and upload a new detection.
 10. Check Panther Console for changes
 
 
+## Exercise 3 Overview
+Apply what we've learned to the following scenarios.
+
+## Instructions for Exercise 3
+Write a detection for each of the following scenarios and run a passing test. Once you've completed all three - submit your results to the Panther Console. First to finish all three in the fastest time, wins! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
