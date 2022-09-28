@@ -1,6 +1,10 @@
 ## Welcome to the Detections Workshop
 This guide will provide you with a step-by-step of all the commands we will use throughout this workshop. Please reference it as we move forward. If you have questions, feel free to ask your group moderator.
 
+
+
+
+
 ## Exercise 1 Overview
 We will use a pre-packaged detection from Panther and modify it to our liking within the Panther Console.
 
@@ -8,7 +12,7 @@ We will use a pre-packaged detection from Panther and modify it to our liking wi
 - [Rules](https://docs.panther.com/writing-detections/rules)
 - [Packs](https://docs.panther.com/writing-detections/detection-packs)
 - [Helpers](https://docs.panther.com/writing-detections/globals?q=helpers)
-- [Deep_Get](https://docs.panther.com/writing-detections#accessing-nested-fields-safely)
+- [Deep_Get](https://docs.panther.com/writing-detections/globals#deep_get)
 
 **Exercise 1 Steps**
 1. Open up a Pack of detections
@@ -52,8 +56,15 @@ We will use a pre-packaged detection from Panther and modify it to our liking wi
 }
 ```
 
+
+
+
+
+
+
+
 ## Exercise 2 Overview
-Utilzing the Panther Analysis Tool to create, test, and upload a new detection. 
+Utilizing the Panther Analysis Tool to create, test, and upload a new detection. 
 
 
 **Terms we'll reference**
@@ -80,14 +91,105 @@ Utilzing the Panther Analysis Tool to create, test, and upload a new detection.
 10. Check Panther Console for changes
 
 
-## Exercise 3 Overview
-Apply what we've learned to the following scenarios.
-
-## Instructions for Exercise 3
-Write a detection for each of the following scenarios and run a passing test. Once you've completed all three - submit your results to the Panther Console. First to finish all three in the fastest time, wins! 
 
 
 
+
+
+
+
+## Exercise 3 Overview and Instructions
+Write a detection for each of the following scenarios and run a passing unit test. Once you've completed all three - submit your results to the Panther Console. First to finish all three in the fastest time, wins!
+
+**Resources that will help**
+[Rules Template](https://github.com/panther-labs/panther-analysis/blob/master/templates/example_rule.py)
+[Documentation](https://docs.panther.com/)
+[Common Helper Functions](https://docs.panther.com/writing-detections/globals#common-helpers)
+
+
+**Rule 1 - Github New Repository Created**
+```
+{
+	"repo": "my-org/my-repo",
+	"actor": "cat",
+	"action": "repo.create",
+	"created_at": 1621305118553,
+	"org": "my-org",
+	"p_log_type": "GitHub.Audit"
+}
+```
+
+Prompt 1 - Write a detection that fires an alert when a new Github Repository is created by a user 
+Prompt 2 - Create a description and runbook and add it into the alert
+
+
+
+
+
+**Rule 2 - Untrusted Device Access**
+```
+{
+	"created_by": {
+		"id": "12345678",
+		"type": "user",
+		"login": "cat@example",
+		"name": "Bob Cat"
+	},
+	"event_type": "DEVICE_TRUST_CHECK_FAILED",
+	"source": {
+		"login": "user@example",
+		"id": "12345678",
+		"type": "user"
+	},
+	"type": "event",
+	"additional_details": "{\"key\": \"value\"}"
+}
+```
+
+
+
+Prompt 1 - Write a detection that fires an alert when a user device trust check does not pass
+Prompt 2 - Fire an alert with high severity when the login user is Luke Skywalker
+Prompt 3 - Fire an alert with high severity when the login user is Darth Vadar
+
+
+
+
+
+
+
+**Rule 3 - AWS Root Password Change**
+```
+{
+	"recipientAccountId": "123456789012",
+	"requestParameters": null,
+	"responseElements": {
+		"PasswordUpdated": "Success"
+	},
+	"sourceIPAddress": "111.111.111.111",
+	"eventName": "PasswordUpdated",
+	"eventSource": "signin.amazonaws.com",
+	"eventVersion": "1.05",
+	"userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
+	"eventID": "1111",
+	"eventType": "AwsConsoleSignIn",
+	"requestID": "1111",
+	"userIdentity": {
+		"principalId": "123456789012",
+		"type": "Root",
+		"accesKeyId": "1111",
+		"accessKeyId": "",
+		"accountId": "123456789012",
+		"arn": "arn:aws:iam::123456789012:root"
+	},
+	"awsRegion": "us-east-1",
+	"eventTime": "2019-01-01T00:00:00Z"
+}
+```
+
+
+Prompt 1 - Write a detection that fires off an alert when there is an updated password on a root account 
+Prompt 2 - Add the AWS account ID into the title when the alert fires
 
 
 
