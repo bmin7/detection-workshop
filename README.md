@@ -102,9 +102,9 @@ Utilizing the Panther Analysis Tool to create, test, and upload a new detection.
 Write a detection for each of the following scenarios and run a passing unit test. Once you've completed all three - submit your results to the Panther Console. First to finish all three in the fastest time, wins!
 
 **Resources that will help**
-[Rules Template](https://github.com/panther-labs/panther-analysis/blob/master/templates/example_rule.py)
-[Documentation](https://docs.panther.com/)
-[Common Helper Functions](https://docs.panther.com/writing-detections/globals#common-helpers)
+- [Rules Template](https://github.com/panther-labs/panther-analysis/blob/master/templates/example_rule.py)
+- [Documentation](https://docs.panther.com/)
+- [Common Helper Functions](https://docs.panther.com/writing-detections/globals#common-helpers)
 
 
 **Rule 1 - Github New Repository Created**
@@ -119,8 +119,8 @@ Write a detection for each of the following scenarios and run a passing unit tes
 }
 ```
 
-Prompt 1 - Write a detection that fires an alert when a new Github Repository is created by a user 
-Prompt 2 - Create a description and runbook and add it into the alert
+- Prompt 1 - Write a detection that fires an alert when a new Github Repository is created by a user 
+- Prompt 2 - Create a description and runbook and add it into the alert
 
 
 
@@ -148,9 +148,9 @@ Prompt 2 - Create a description and runbook and add it into the alert
 
 
 
-Prompt 1 - Write a detection that fires an alert when a user device trust check does not pass
-Prompt 2 - Fire an alert with high severity when the login user is Luke Skywalker
-Prompt 3 - Fire an alert with high severity when the login user is Darth Vadar
+- Prompt 1 - Write a detection that fires an alert when a user device trust check does not pass
+- Prompt 2 - Fire an alert with high severity when the login user is Luke Skywalker
+- Prompt 3 - Fire an alert with high severity when the login user is Darth Vadar
 
 
 
@@ -188,16 +188,7 @@ Prompt 3 - Fire an alert with high severity when the login user is Darth Vadar
 ```
 
 
-Prompt 1 - Write a detection that fires off an alert when there is an updated password on a root account 
-Prompt 2 - Add the AWS account ID into the title when the alert fires
-
-
-
-
-
-
-
-
-
+- Prompt 1 - Write a detection that fires off an alert when there is an updated password on a root account 
+- Prompt 2 - Add the AWS account ID into the title when the alert fires
 
 
