@@ -126,7 +126,7 @@ Write a detection for each of the following scenarios and run a passing unit tes
 
 
 
-**Rule 2 - Untrusted Device Access**
+**Rule 2 - Box Untrusted Device Access**
 ```
 {
 	"created_by": {
