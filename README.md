@@ -150,7 +150,7 @@ Write a detection for each of the following scenarios and run a passing unit tes
 
 - Prompt 1 - Write a detection that fires an alert when a user device trust check does not pass
 - Prompt 2 - Fire an alert with Info severity when the login user is Luke Skywalker (lukeskywalker@starwars.com)
-- Prompt 3 - Fire an alert with High severity when the login user is Darth Vadar (darthvadar@starward.com)
+- Prompt 3 - Fire an alert with High severity when the login user is Darth Vadar (darthvadar@starwars.com)
 
 
 
@@ -189,6 +189,6 @@ Write a detection for each of the following scenarios and run a passing unit tes
 
 
 - Prompt 1 - Write a detection that fires off an alert when there is an updated password on a root account 
-- Prompt 2 - Add the AWS account ID into the title when the alert fires
+- Prompt 2 - Add the AWS account ID into the Alert Title 
 
 
