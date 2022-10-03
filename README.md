@@ -18,12 +18,12 @@ We will use a pre-packaged detection from Panther and modify it to our liking wi
 1. Open up a Pack of detections
 2. Select the Okta.APIKey.Created rule in the Okta Rules Pack
 3. Create a new rule and copy/paste Python code from original packed rule with unique name
-4. Run a Test - See code snippet 1-1
-5. Add more to tune the detection 
+4. Run a Test - See the sample data below. 
+5. Add the severity function to triage low level alerts. 
 6. Save Changes
 
 
-**Code 1-1**
+**Sample Data for Okta**
 ```
 {
 	"debugContext": {},
@@ -137,7 +137,7 @@ Write a detection for each of the following scenarios and run a passing unit tes
 	},
 	"event_type": "DEVICE_TRUST_CHECK_FAILED",
 	"source": {
-		"login": "user@example",
+		"login": "lukeskywalker@starwars.com",
 		"id": "12345678",
 		"type": "user"
 	},
@@ -149,8 +149,8 @@ Write a detection for each of the following scenarios and run a passing unit tes
 
 
 - Prompt 1 - Write a detection that fires an alert when a user device trust check does not pass
-- Prompt 2 - Fire an alert with high severity when the login user is Luke Skywalker
-- Prompt 3 - Fire an alert with high severity when the login user is Darth Vadar
+- Prompt 2 - Fire an alert with Info severity when the login user is Luke Skywalker (lukeskywalker@starwars.com)
+- Prompt 3 - Fire an alert with High severity when the login user is Darth Vadar (darthvadar@starward.com)
 
 
 
