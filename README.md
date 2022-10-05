@@ -149,16 +149,11 @@ Write a detection for each of the following scenarios and run a passing unit tes
 
 
 - Prompt 1 - Write a detection that fires an alert when a user device trust check does not pass
-- Prompt 2 - Fire an alert with Info severity when the login user is Luke Skywalker (lukeskywalker@starwars.com)
-- Prompt 3 - Fire an alert with High severity when the login user is Darth Vadar (darthvadar@starwars.com)
+- Prompt 2 - Fire an alert with Info severity when the login user is lukeskywalker@starwars.com and has a Critical severity alert when the user is darthvadar@starwars.com. For all other alerts, severity should be Low
 
 
 
-
-
-
-
-**Rule 3 - AWS Root Password Change**
+**Rule 3 - AWS CloudTrail - Root Password Change**
 ```
 {
 	"recipientAccountId": "123456789012",
