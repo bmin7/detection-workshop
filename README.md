@@ -1,6 +1,5 @@
-## Welcome to the Detections Workshop
+# Welcome to the Detections Workshop
 This guide will provide you with a step-by-step of all the commands we will use throughout this workshop. Please reference it as we move forward. If you have questions, feel free to ask your group moderator.
-
 
 
 
@@ -15,12 +14,13 @@ We will use a pre-packaged detection from Panther and modify it to our liking wi
 - [Deep_Get](https://docs.panther.com/writing-detections/globals#deep_get)
 
 **Exercise 1 Steps**
-1. Open up a Pack of detections
-2. Select the Okta.APIKey.Created rule in the Okta Rules Pack
-3. Create a new rule and copy/paste Python code from original packed rule with unique name
-4. Run a Test - See the sample data below. 
-5. Add the severity function to triage low level alerts. 
-6. Save Changes
+1. Go to Packs and find the Okta Pack
+2. Select the Okta.APIKey.Created rule 
+3. Clone and Edit the existing detection - Be sure to name the detection with your name or initials 
+4. Copy over the test event with the sample data from Okta
+5. Run a Unit Test 
+6. Add the severity function to triage low level alerts. 
+7. Save Changes
 
 
 **Sample Data for Okta**
