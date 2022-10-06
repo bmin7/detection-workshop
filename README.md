@@ -80,12 +80,13 @@ Utilizing the Panther Analysis Tool to create, test, and upload a new detection.
 3. Fork off Panther Analysis Tool to local 
 ```git clone https://github.com/panther-labs/panther-analysis.git```
 4. Create API Token in Panther Console 
-5. Use Check-Connection to verify API setup is successful
+5. Check permissions for Read Panther Settings Info, Bulk Upload, Manage Policies, Manage Rules, Manage Schedule Queries, View Log Sources, Manage Log Sources
+6. Use Check-Connection to verify API setup is successful
 ```panther_analysis_tool check-connection --api-host DOMAIN --api-token TOKEN```
-6. Create new file and copy a .py and .yml file
+6. Create new directory and copy a .py and .yml file
 7. Modify .py file and .yml file
 8. Test the rule
-```panther_analysis_tool test --path <path to rule>```
+```panther_analysis_tool test --path <path to rule directory>```
 9. Once verified, upload the rule
 ```panther_analysis_tool upload --path <path to rule> --api-host DOMAIN --api-token TOKEN```
 10. Check Panther Console for changes
