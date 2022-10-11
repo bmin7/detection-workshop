@@ -8,19 +8,23 @@ This guide will provide you with a step-by-step of all the commands we will use 
 We will use a pre-packaged detection from Panther and modify it to our liking within the Panther Console.
 
 **Terms we'll reference**
+- [Functions Template](https://github.com/panther-labs/panther-analysis/blob/master/templates/example_rule.py)
 - [Rules](https://docs.panther.com/writing-detections/rules)
 - [Packs](https://docs.panther.com/writing-detections/detection-packs)
 - [Helpers](https://docs.panther.com/writing-detections/globals?q=helpers)
 - [Deep_Get](https://docs.panther.com/writing-detections/globals#deep_get)
 
 **Exercise 1 Steps**
-1. Go to Packs and find the Okta Pack
+1. In the Panther Console - Navigate to Build > Packs > Okta Pack
 2. Select the Okta.APIKey.Created rule 
-3. Clone and Edit the existing detection - Be sure to name the detection with your name or initials 
-4. Copy over the test event with the sample data from Okta
-5. Run a Unit Test 
-6. Add the severity function to triage low level alerts. 
-7. Save Changes
+3. In a new tab, create a new rule
+4. Name the detection a unique name 
+5. Copy and Paste the code from Okta.APIKey.Created 
+6. Modify the code
+7. Copy over the test event with the sample data from Okta Sample Data Below
+8. Run a Unit Test 
+9. Add the severity function from the rule functions template in line 11
+10. Save Changes
 
 
 **Sample Data for Okta**
@@ -64,7 +68,7 @@ We will use a pre-packaged detection from Panther and modify it to our liking wi
 
 
 ## Exercise 2 Overview
-Utilizing the Panther Analysis Tool to create, test, and upload a new detection. 
+Utilizing the Panther Analysis Tool to create, test, and upload a new detection on your local machine. 
 
 
 **Terms we'll reference**
@@ -102,8 +106,15 @@ Utilizing the Panther Analysis Tool to create, test, and upload a new detection.
 ## Exercise 3 Overview and Instructions
 Write a detection for each of the following scenarios and run a passing unit test. Once you've completed all three - submit your results to the Panther Console. First to finish all three in the fastest time, wins!
 
+**Steps for Each Rule**
+1. Create a new rule in the Panther Console
+2. Give it a unique name with your initials
+3. Under the Functions & Test Tab - scroll to the bottom and create a new unit test
+4. Copy and paste the example data for the rule you're working on below
+5. Write a Python Rule 
+6. Test and Verify
+
 **Resources that will help**
-- [Rules Template](https://github.com/panther-labs/panther-analysis/blob/master/templates/example_rule.py)
 - [Documentation](https://docs.panther.com/)
 - [Common Helper Functions](https://docs.panther.com/writing-detections/globals#common-helpers)
 
