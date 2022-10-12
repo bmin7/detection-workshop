@@ -4,7 +4,7 @@ This guide will provide you with a step-by-step of all the commands we will use 
 
 
 
-## Exercise 1 Overview
+## Exercise 1 - Using Panther Packs to write a new detection
 We will use a pre-packaged detection from Panther and modify it to our liking within the Panther Console.
 
 **Terms we'll reference**
@@ -67,7 +67,7 @@ We will use a pre-packaged detection from Panther and modify it to our liking wi
 
 
 
-## Exercise 2 Overview
+## Exercise 2 - Locally write a detection and upload it into Panther
 Utilizing the Panther Analysis Tool to create, test, and upload a new detection on your local machine. 
 
 
@@ -103,7 +103,7 @@ Utilizing the Panther Analysis Tool to create, test, and upload a new detection 
 
 
 
-## Exercise 3 Overview and Instructions
+## Exercise 3 - Test your knowledge
 Write a detection for each of the following scenarios and run a passing unit test. Once you've completed all three - submit your results to the Panther Console. First to finish all three in the fastest time, wins!
 
 **Steps for Each Rule**
