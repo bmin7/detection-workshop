@@ -4,8 +4,8 @@ This guide will provide you with a step-by-step of all the commands we will use 
 
 
 
-## Exercise 1 - Using Panther Packs to write a new detection
-We will use a pre-packaged detection from Panther and modify it to our liking within the Panther Console.
+## Exercise 1 - Apply an out-of-the-box detection and modify it for your environment
+We will use a pre-packaged detection from Panther and modify it in the Panther console. 
 
 **Terms we'll reference**
 - [All Available Rule Functions](https://github.com/panther-labs/panther-analysis/blob/master/templates/example_rule.py)
@@ -67,8 +67,8 @@ We will use a pre-packaged detection from Panther and modify it to our liking wi
 
 
 
-## Exercise 2 - Locally write a detection and upload it into Panther
-Utilizing the Panther Analysis Tool to create, test, and upload a new detection on your local machine. 
+## Exercise 2 - Use Developer Centric Workflows when writing detections
+Use the Panther Analysis Tool (PAT) with local developer tools to write and test new detections. 
 
 
 **Terms we'll reference**
@@ -97,14 +97,50 @@ Utilizing the Panther Analysis Tool to create, test, and upload a new detection 
 
 
 
+## Exercise 3 - Enrich a Detection with GreyNoise
+We're going to walk through how to use an enrichment provider in product to enrich a detection.
+
+- [GreyNoise](https://docs.panther.com/enrichment/greynoise)
+- [Lookup Tables](https://docs.panther.com/enrichment/lookup-tables)
 
 
 
+**Sample Data for Brute Force Detection**
+```
+{
+	"actor": {
+		"alternateId": "admin",
+		"displayName": "unknown",
+		"id": "unknown",
+		"type": "User"
+	},
+	"client": {
+		"ipAddress": "111.111.111.111"
+	},
+	"eventType": "user.session.start",
+	"outcome": {
+		"reason": "VERIFICATION_ERROR",
+		"result": "FAILURE"
+	},
+	"p_enrichment": {
+		"greynoise_noise_basic": {
+			"client.ipAddress": {
+				"actor": "EviLCorp",
+				"classification": "benign",
+				"ip": "1.2.3.4"
+			}
+		}
+	},
+	"p_event_time": "2021-06-04 09:59:53.650807",
+	"p_log_type": "Okta.SystemLog",
+	"p_parse_time": "2021-06-04 10:02:33.650807"
+}
+```
 
 
 
-## Exercise 3 - Test your knowledge
-Write a detection for each of the following scenarios and run a passing unit test. Once you've completed all three - submit your results to the Panther Console. First to finish all three in the fastest time, wins!
+## Let's Test Your Knowledge!
+Write a detection for each of the following scenarios and run a passing unit test. Once you've completed all three - submit your results to the Panther Console. 
 
 **Steps for Each Rule**
 1. Create a new rule in the Panther Console
