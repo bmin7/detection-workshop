@@ -8,21 +8,21 @@ This guide will provide you with a step-by-step of all the commands we will use 
 We will use a pre-packaged detection from Panther and modify it to our liking within the Panther Console.
 
 **Terms we'll reference**
-- [Functions Template](https://github.com/panther-labs/panther-analysis/blob/master/templates/example_rule.py)
-- [Rules](https://docs.panther.com/writing-detections/rules)
-- [Packs](https://docs.panther.com/writing-detections/detection-packs)
-- [Helpers](https://docs.panther.com/writing-detections/globals?q=helpers)
-- [Deep_Get](https://docs.panther.com/writing-detections/globals#deep_get)
+- [All Available Rule Functions](https://github.com/panther-labs/panther-analysis/blob/master/templates/example_rule.py)
+- [What is a rule?](https://docs.panther.com/writing-detections/rules)
+- [What are Packs?](https://docs.panther.com/writing-detections/detection-packs)
+- [What are Helpers?](https://docs.panther.com/writing-detections/globals?q=helpers)
+- [What is Deep_Get?](https://docs.panther.com/writing-detections/globals#deep_get)
 
 **Exercise 1 Steps**
 1. In the Panther Console - Navigate to Build > Packs > Okta Pack
-2. Select the Okta.APIKey.Created rule 
+2. Select the Okta.APIKey.Created rule
 3. In a new tab, create a new rule
 4. Name the detection a unique name 
 5. Copy and Paste the code from Okta.APIKey.Created 
 6. Modify the code
 7. Copy over the test event with the sample data from Okta Sample Data Below
-8. Run a Unit Test 
+8. Run a Unit Test
 9. Add the severity function from the rule functions template in line 11
 10. Save Changes
 
