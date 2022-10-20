@@ -2,10 +2,49 @@
 This guide will provide you with a step-by-step of all the commands we will use throughout this workshop. Please reference it as we move forward. If you have questions, feel free to ask your group moderator.
 
 
+## Exercise 1 - Writing a Detection
+Using the rule function and other pre-existing helper functions, creating a detection is extremely efficient in Panther. For this exercise, you will use the Panther console to create your first detection. 
+
+**Exercise 1 Steps**
+1. In the Panther Console - Navigate to Build > Detections > Create New
+2. Select "Rule" and give it a unique name "Brandon's Failed Login Detection" (Use your own name or initials)
+3. Select the log source "Okta System Log" and set Severity to "Medium"
+4. Select Functions and Tests in the tab 
+5. Use the Rule Function to have the detection fire when a user has a failed login attempt
+
+```
+def 
+
+
+```
+
+
+```
+{
+	"actor": {
+		"alternateId": "admin",
+		"displayName": "unknown",
+		"id": "unknown",
+		"type": "User"
+	},
+	"client": {
+		"ipAddress": "111.111.111.111"
+	},
+	"eventType": "user.session.start",
+	"outcome": {
+		"reason": "VERIFICATION_ERROR",
+		"result": "FAILURE"
+	},
+	"p_event_time": "2021-06-04 09:59:53.650807",
+	"p_log_type": "Okta.SystemLog",
+	"p_parse_time": "2021-06-04 10:02:33.650807"
+}
+```
+
 
 
 ## Exercise 1 - Apply an out-of-the-box detection and modify it for your environment
-We will use a pre-packaged detection from Panther and modify it in the Panther console. 
+By utilzing a pre-packaged detection, we can easily modify an existing detection to tune to our environment. By using the python functions that Panther provides, code templates are easily available. 
 
 **Terms we'll reference**
 - [All Available Rule Functions](https://github.com/panther-labs/panther-analysis/blob/master/templates/example_rule.py)
