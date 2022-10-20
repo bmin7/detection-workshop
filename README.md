@@ -5,20 +5,32 @@ This guide will provide you with a step-by-step of all the commands we will use 
 ## Exercise 1 - Writing a Detection
 Using the rule function and other pre-existing helper functions, creating a detection is extremely efficient in Panther. For this exercise, you will use the Panther console to create your first detection. 
 
+**Terms we'll reference**
+- [All Available Rule Functions](https://github.com/panther-labs/panther-analysis/blob/master/templates/example_rule.py)
+- [What is a rule?](https://docs.panther.com/writing-detections/rules)
+- [What are Helpers?](https://docs.panther.com/writing-detections/globals?q=helpers)
+- [What is Deep_Get?](https://docs.panther.com/writing-detections/globals#deep_get)
+
 **Exercise 1 Steps**
 1. In the Panther Console - Navigate to Build > Detections > Create New
 2. Select "Rule" and give it a unique name "Brandon's Failed Login Detection" (Use your own name or initials)
 3. Select the log source "Okta System Log" and set Severity to "Medium"
-4. Select Functions and Tests in the tab 
-5. Use the Rule Function to have the detection fire when a user has a failed login attempt
+4. Select Functions and Tests in the tab
+5. Create a Unit Test and copy and paste the sample event from Okta below. We will use this to create our detection. 
+6. Import deep_get function from the panther_base_helpers library ```from panther_base_helpers import deep_get```
+7. Return the event for a login ```return event.get("eventType") == 'user.session.start'```
+8. Return the event for a failed login result using the deep_get function ```deep_get(event, 'outcome', 'result') == "FAILURE"```
+9. Final detection should look something like this. 
 
 ```
-def 
+from panther_base_helpers import deep_get
 
+def rule(event):
+    return event.get("eventType") == 'user.session.start' and deep_get(event, 'outcome', 'result') == "FAILURE"
 
 ```
 
-
+**Sample Okta Event Failed Login**
 ```
 {
 	"actor": {
@@ -43,30 +55,34 @@ def
 
 
 
-## Exercise 1 - Apply an out-of-the-box detection and modify it for your environment
+## Exercise 2 - Apply an out-of-the-box detection and modify it for your environment
 By utilzing a pre-packaged detection, we can easily modify an existing detection to tune to our environment. By using the python functions that Panther provides, code templates are easily available. 
 
 **Terms we'll reference**
-- [All Available Rule Functions](https://github.com/panther-labs/panther-analysis/blob/master/templates/example_rule.py)
-- [What is a rule?](https://docs.panther.com/writing-detections/rules)
 - [What are Packs?](https://docs.panther.com/writing-detections/detection-packs)
-- [What are Helpers?](https://docs.panther.com/writing-detections/globals?q=helpers)
-- [What is Deep_Get?](https://docs.panther.com/writing-detections/globals#deep_get)
 
-**Exercise 1 Steps**
+
+**Exercise 2 Steps**
 1. In the Panther Console - Navigate to Build > Packs > Okta Pack
 2. Select the Okta.APIKey.Created rule
-3. In a new tab, create a new rule
-4. Name the detection a unique name 
-5. Copy and Paste the code from Okta.APIKey.Created 
-6. Modify the code
-7. Copy over the test event with the sample data from Okta Sample Data Below
-8. Run a Unit Test
-9. Add the severity function from the rule functions template in line 11
-10. Save Changes
+3. Duplicate your tab 
+4. Navigate to Build > Detections > Create New and Create a new rule (Do not clone packed rule)
+5. Name the detection a unique name with your initials - Sample "Okta API Key Created - Brandon"
+6. Copy and Paste the code from Okta.APIKey.Created Packed Rule
+7. Grab the severity function from the templates page or below 
+```def severity(event):
+    if event.get("field") == "value":
+        return "INFO"
+    return "HIGH"
+```
+8. Add the severity function into your detection. Anywhere under the rule function is fine. 
+9. Copy over the test event with the sample log event from Okta Sample Data Below
+10. Modify the severity function to return a "Low" event when the user is your own email or otherwise return a "High" event (Hint - you will have to use deep_get for this)
+11. Test your changes using the unit test
+12. Save Changes
 
 
-**Sample Data for Okta**
+**Okta API Key Created Log Event**
 ```
 {
 	"debugContext": {},
@@ -103,10 +119,7 @@ By utilzing a pre-packaged detection, we can easily modify an existing detection
 
 
 
-
-
-
-## Exercise 2 - Use Developer Centric Workflows when writing detections
+## Exercise 3 - Use Local Developer Centric Workflows when writing detections
 Use the Panther Analysis Tool (PAT) with local developer tools to write and test new detections. 
 
 
@@ -115,36 +128,76 @@ Use the Panther Analysis Tool (PAT) with local developer tools to write and test
 - [API Key](https://docs.panther.com/panther-developer-workflows/api#how-to-use-panthers-api)
 
 
-**Exercise 2 Steps**
-1. Install Panther Analysis Tool 
+**Exercise 3 Steps**
+1. Install Prerequisites on local Machine (Pip, Python3, Git)
+2. Install Panther Analysis Tool 
 ```pip install panther_analysis_tool```
-2. Verify proper version 
+3. Verify proper version (for those of you that have it already, you don't have to update your version)
 ```panther_analysis_tool --version```
-3. Fork off Panther Analysis Tool to local 
+4. Fork off Panther Analysis Tool to local 
 ```git clone https://github.com/panther-labs/panther-analysis.git```
-4. Create API Token in Panther Console 
-5. Check permissions for Read Panther Settings Info, Bulk Upload, Manage Policies, Manage Rules, Manage Schedule Queries, View Log Sources, Manage Log Sources
-6. Use Check-Connection to verify API setup is successful
+5. Create API Token in Panther Console - Select the gear on the top right > API Tokens > Create New Token
+6. Check permissions for Read Panther Settings Info, Bulk Upload, Manage Policies, Manage Rules, Manage Schedule Queries, View Log Sources, Manage Log Sources
+7. Use Check-Connection to verify API setup is successful (This is only on Panther Analysis Tool 0.15.1 and up)
 ```panther_analysis_tool check-connection --api-host DOMAIN --api-token TOKEN```
-6. Create new directory and copy a .py and .yml file
-7. Modify .py file and .yml file
-8. Test the rule
+7. Create new directory and copy a .py and .yml file
+8. Modify .py file and .yml file
+9. Test the rule
 ```panther_analysis_tool test --path <path to rule directory>```
-9. Once verified, upload the rule
+10. Once verified, upload the rule
 ```panther_analysis_tool upload --path <path to rule> --api-host DOMAIN --api-token TOKEN```
-10. Check Panther Console for changes
+11. Check Panther Console for changes
 
 
 
-## Exercise 3 - Enrich a Detection with GreyNoise
-We're going to walk through how to use an enrichment provider in product to enrich a detection.
+## Exercise 4 - Enrich a Detection with GreyNoise
+Write a detection while using the GreyNoise helper to apply threat intelligence directly into a detection. For this example, we will use a brute force detection with the sample data from Okta below. 
 
+**Terms We Reference**
+- [p_enrichment](https://docs.panther.com/enrichment/lookup-tables#write-a-detection-using-lookup-table-data)
 - [GreyNoise](https://docs.panther.com/enrichment/greynoise)
 - [Lookup Tables](https://docs.panther.com/enrichment/lookup-tables)
 
+**Exercise 4 Steps**
+1. Create a new detection in the Panther Console Build > Detections > Create New
+2. Name the detection with your initials (Demo GreyNoise Detection Brandon)
+3. Select the Okta System Log Type and set a Medium Severity
+4. Select Functions & Tests to begin writing the detection
+5. Copy and Paste the Event Log below into a new unit test. You'll use this information to write your detection. 
+6. Import the deep_get function and the GetGreyNoiseObject function 
+```
+from panther_greynoise_helpers import GetGreyNoiseObject
+from panther_base_helpers import deep_get
+```
+7. In the rule function, begin by declaring a global variable "noise" and setting it to the GetGreyNoiseObject event pulled in from the helper function
+```
+global noise 
+noise = GetGreyNoiseObject(event)
+```
+8. Create an if statement that returns true when a user session starts and a failed login is detection (same statement as the one we used in the first exercise.
+9. Your rule function should look something like this: 
+```
+def rule(event):
+    global noise 
+    noise = GetGreyNoiseObject(event)
+    if (event.get("eventType") == "user.session.start" and deep_get(event, "outcome", "result") == "FAILURE"):
+        return True
+    return False
+```
+10. Add the severity function to return a "critical" alert when an IP is deemed "malicious" by GreyNoise and to return a "info" level alert when IP is deemed "benign". For all others, return "medium" severity. 
+```
+def severity(event):
+    if noise.classification("client.ipAddress") == "malicious":
+        return "CRITICAL"
+    if noise.classification("client.ipAddress") == "benign":
+        return "INFO"
+    return "MEDIUM"
+
+```
+11. Test your detection and modify as needed
 
 
-**Sample Data for Brute Force Detection**
+**Sample Okta Event Data for Brute Force Detection**
 ```
 {
 	"actor": {
@@ -178,8 +231,8 @@ We're going to walk through how to use an enrichment provider in product to enri
 
 
 
-## Let's Test Your Knowledge!
-Write a detection for each of the following scenarios and run a passing unit test. Once you've completed all three - submit your results to the Panther Console. 
+## Test Your Knowledge
+This section applies everything we've talked about in the above sections. Use each set of sample data as a unit test and create a corresponding detection based on the prompt. A passing unit test will show the success of your detection. 
 
 **Steps for Each Rule**
 1. Create a new rule in the Panther Console
@@ -236,7 +289,7 @@ Write a detection for each of the following scenarios and run a passing unit tes
 
 
 - Prompt 1 - Write a detection that fires an alert when a user device trust check does not pass
-- Prompt 2 - Fire an alert with Info severity when the login user is lukeskywalker@starwars.com and has a Critical severity alert when the user is darthvadar@starwars.com. For all other alerts, severity should be Low
+- Prompt 2 - Fire an alert with Info severity when the login user is luke@starwars.com and has a Critical severity alert when the user is vadar@starwars.com. For all other alerts, severity should be Low
 
 
 
